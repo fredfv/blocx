@@ -1,7 +1,8 @@
 import 'package:blocx/core/utils/result.dart';
-import '../entities/user.dart';
+import 'package:blocx/features/auth/domain/application/login_request.dart';
+import '../entities/user_entity.dart';
 
-abstract class IAuthRepository {
-  Future<Result<Exception, User>> login(String username, String password);
-  Future<Result<Exception, User>> logout();
+abstract interface class IAuthRepository {
+  Future<Result<Exception, UserEntity>> login(LoginRequest request);
+  Future<Result<Exception, bool>> logout();
 }

@@ -1,4 +1,5 @@
-class User {
+class UserEntity {
+  final String id;
   final String name;
   final String password;
   final String login;
@@ -6,9 +7,10 @@ class User {
   final String createdAt;
   final String processedAt;
   final bool excluded;
-  final String id;
+  final String token;
 
-  User({
+  UserEntity({
+    required this.id,
     required this.name,
     required this.password,
     required this.login,
@@ -16,11 +18,12 @@ class User {
     required this.createdAt,
     required this.processedAt,
     required this.excluded,
-    required this.id,
+    required this.token,
   });
 
-  factory User.empty() {
-    return User(
+  factory UserEntity.empty() {
+    return UserEntity(
+      id: '',
       name: '',
       password: '',
       login: '',
@@ -28,11 +31,12 @@ class User {
       createdAt: '',
       processedAt: '',
       excluded: false,
-      id: '',
+      token: '',
     );
   }
 
-  User copyWith({
+  UserEntity copyWith({
+    String? id,
     String? name,
     String? password,
     String? login,
@@ -40,9 +44,10 @@ class User {
     String? createdAt,
     String? processedAt,
     bool? excluded,
-    String? id,
+    String? token,
   }) {
-    return User(
+    return UserEntity(
+      id: id ?? this.id,
       name: name ?? this.name,
       password: password ?? this.password,
       login: login ?? this.login,
@@ -50,12 +55,12 @@ class User {
       createdAt: createdAt ?? this.createdAt,
       processedAt: processedAt ?? this.processedAt,
       excluded: excluded ?? this.excluded,
-      id: id ?? this.id,
+      token: token ?? this.token,
     );
   }
 
   @override
   toString() {
-    return 'User(name: $name, password: $password, login: $login, role: $role, createdAt: $createdAt, processedAt: $processedAt, excluded: $excluded, id: $id)';
+    return 'UserEntity(id: $id, name: $name, password: $password, login: $login, role: $role, createdAt: $createdAt, processedAt: $processedAt, excluded: $excluded, token: $token)';
   }
 }
