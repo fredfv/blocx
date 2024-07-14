@@ -9,7 +9,7 @@ class UserEntity {
   final bool excluded;
   final String token;
 
-  UserEntity({
+  const UserEntity({
     required this.id,
     required this.name,
     required this.password,
@@ -21,19 +21,17 @@ class UserEntity {
     required this.token,
   });
 
-  factory UserEntity.empty() {
-    return UserEntity(
-      id: '',
-      name: '',
-      password: '',
-      login: '',
-      role: '',
-      createdAt: '',
-      processedAt: '',
-      excluded: false,
-      token: '',
-    );
-  }
+  static const empty = UserEntity(
+    id: '',
+    name: '',
+    password: '',
+    login: '',
+    role: '',
+    createdAt: '',
+    processedAt: '',
+    excluded: false,
+    token: '',
+  );
 
   UserEntity copyWith({
     String? id,

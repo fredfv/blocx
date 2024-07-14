@@ -1,9 +1,8 @@
-import 'package:blocx/features/auth/domain/application/login_request.dart';
-import 'package:blocx/features/auth/infra/repositories/datasources/i_auth_datasource.dart';
+import '../../domain/application/login_request.dart';
+import '../repositories/datasources/i_auth_datasource.dart';
 
 import '../../../../core/adapters/http_adapters/http_client_adapter.dart';
 import '../../../../core/utils/result.dart';
-import '../../domain/entities/user_entity.dart';
 import '../repositories/models/user_model.dart';
 
 class AuthDatasource implements IAuthDatasource {
