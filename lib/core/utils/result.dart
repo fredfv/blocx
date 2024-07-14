@@ -21,8 +21,8 @@ abstract class Result<F extends Object, S extends Object> {
   bool isSuccess();
 
   W fold<W>(
-    W Function(S success) onSuccess,
     W Function(F failure) onFailure,
+    W Function(S success) onSuccess,
   );
 }
 
@@ -54,8 +54,8 @@ class Success<F extends Object, S extends Object> implements Result<F, S> {
 
   @override
   W fold<W>(
-    W Function(S success) onSuccess,
     W Function(F error) onFailure,
+    W Function(S success) onSuccess,
   ) {
     return onSuccess(_success);
   }
@@ -105,8 +105,8 @@ class Failure<F extends Object, S extends Object> implements Result<F, S> {
 
   @override
   W fold<W>(
-    W Function(S succcess) onSuccess,
     W Function(F failure) onFailure,
+    W Function(S succcess) onSuccess,
   ) {
     return onFailure(_failure);
   }
