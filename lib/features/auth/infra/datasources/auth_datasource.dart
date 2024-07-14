@@ -12,7 +12,7 @@ class AuthDatasource implements IAuthDatasource {
 
   @override
   Future<Result<Exception, UserModel>> login(LoginRequest request) async {
-    const url = 'http://localhost:5001/api/v1/person/auth';
+    const url = 'http://192.168.15.12:5001/api/v1/person/auth';
 
     try {
       final response = await client.post(url, data: request.toMap);

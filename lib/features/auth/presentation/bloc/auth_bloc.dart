@@ -26,23 +26,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthLogoutRequested>(_onAuthLogoutRequested);
   }
 
-  void _onAuthLogoutRequested(
+  Future<void> _onAuthLogoutRequested(
     AuthLogoutRequested event,
     Emitter<AuthState> emit,
-  ) {
-    _logoutUsecase(unit).then((result) {
-      result.fold(
-        (l) => emit(AuthError(l.toString())),
-        (r) => emit(const AuthUnauthenticated()),
-      );
-    });
+  ) async {
+    emit(const AuthLoading());
+
+    final result = await _logoutUsecase(unit);
+
+    result.fold(
+      (l) => emit(AuthError(l.toString())),
+      (r) => emit(const AuthUnauthenticated()),
+    );
   }
 
   Future<void> _onAuthLoginRequested(
     AuthLoginRequested event,
     Emitter<AuthState> emit,
   ) async {
-    emit(const AuthLoading()); // Emit a loading state before the async operation
+    emit(const AuthLoading());
 
     final result = await _authUseCase(event.request);
 

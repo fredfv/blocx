@@ -23,8 +23,9 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Result<Exception, bool>> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<Result<Exception, bool>> logout() async {
+    final result = await Future.delayed(const Duration(seconds: 1));
+
+    return const Success(true);
   }
 }

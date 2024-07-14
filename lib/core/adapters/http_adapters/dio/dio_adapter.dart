@@ -15,6 +15,8 @@ class DioAdapter implements IHttpClientAdapter {
     this.interceptors = const [],
   }) {
     dio.options.validateStatus = (status) => status! < 600;
+    dio.options.receiveTimeout = const Duration(seconds: 10);
+    dio.options.connectTimeout = const Duration(seconds: 10);
     if (interceptors.isNotEmpty) dio.interceptors.addAll(interceptors);
   }
 

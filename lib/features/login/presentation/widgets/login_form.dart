@@ -18,6 +18,8 @@ class LoginForm extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
+        } else if (state is LoginSuccess) {
+          Navigator.of(context).pushReplacementNamed('/home');
         }
       },
       child: Padding(
